@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savatchadagi mahsulotlar</title>
+    <!-- <link rel="shortcut icon" href="./images/hamroh logo-03.png" type="image/x-icon"> -->
+    <link rel="stylesheet" href="{% static './style/style.css' %}">
+    <link rel="stylesheet" href="{% static './style/css_1100.css' %}">
+    <link rel="stylesheet" href="{% static './style/css_800.css' %}">
+    <link rel="stylesheet" href="{% static './style/css_560.css' %}">
+    <link rel="stylesheet" href="{% static './style/css_450.css' %}">
+    <link rel="stylesheet" href="{% static './style/css_380.css' %}">
+    
+    <link rel="stylesheet" href="{% static './style/css_300.css' %}">
+    
+    
+</head>
+<body>
+
+    <div class="root">
+        <div class="header">
+            <div class="header_top">
+                <div class="logo">
+                    <img src="{% static './images/hamroh logo-02.png' %}" alt="">
+                </div>
+                <div class="search">
+                    <div class="search_category">
+                        <div class="search_category_head">
+                            <p class="search_category_head_content">Barcha tovarlar</p>
+                            <img src="{% static './images/down_arrow.png' %}"  class="search_category_head_content">
+                        </div>
+                        <ul class="search_category_body">
+                        </ul>
+                    </div>
+                    <div class="search_input">
+                        <input type="text" placeholder="Search...">
+                        <div><img src="{% static './images/loupe.png' %}" alt=""></div>
+                    </div>
+                </div>
+                <div class="header_top_right">
+                    <div class="language">
+                        <img src="{% static './images/language.png' %}" class="language_img">
+                        <div>
+                            <div>
+                                <p>O'zbek</p>
+                                <img src="{% static './images/uzbekistan.png' %}" alt="">
+                            </div>
+                            <div>
+                                <p>Русский</p>
+                                <img src="{% static './images/russia.png' %}" alt="">
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <a href="{% url 'box' %}" ><img src="{% static './images/shopping-cart.png' %}" alt="" ></a>
+                </div>
+            </div>
+        </div>
+        <div class="nav">
+            <div class="categories">
+                <div class="category_title">
+                    <img src="{% static './images/menu.png' %}"  class="category_title_content">
+                    <p class="category_title_content">Kategoriyalar</p>
+                </div>
+                <ul></ul>
+            </div>
+            <div class="navbar">
+                <div class="box-burger-menu">
+                    <div class="burger-menu"></div>
+                </div>
+                <ul>
+                    <li><a href="{% url 'dashboard' %}">Bosh sahifa</a></li>
+                    <li><a href="{% url 'about' %}">Biz haqimizda</a></li>
+                    <li><a href="{% url 'delivery' %}">Yetkazib berish</a></li>
+                    <li><a href="{% url 'location' %}">Joylashuv</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="page">
+            <p>Savatchadagi mahsulotlar</p>
+            <div class="title_product">
+                <div class="pr_name">Mahsulotlar</div>
+                <div class="pr_price">Narxi</div>
+                <div class="pr_number">Soni</div>
+                <div class="pr_all_price">Jami narxi</div>
+            </div>
+            <div class="buy_products">
+                {% for box in get_box %}
+                    <div class="card">
+                        <div class="card_icon">
+                            <img src="{{ box.product.product_image.url }}" alt="">
+                        </div>
+                        <div class="card_name">
+                            <p>{{ box.product.product_category }}</p>
+                            <p>{{ box.product.product_title }}</p>
+                        </div>
+                        <div class="card_price">
+                            <p class="summa">{{ box.product.product_cost }}</p>
+                            <p>so'm</p>
+                        </div>
+                        <div class="number_product">
+                            <div>
+                                <p class="minus">-</p>
+                                <input type="text" value="1">
+                                <p class="plus">+</p>
+                            </div>
+                        </div> 
+                        <div class="all_price">
+                            <p class="all_summa">1000</p>
+                            <p>so'm</p>
+                        </div>    
+                        <div class="card_btn">
+                            <button>Xarid qilmaslik</button>
+                        </div>
+                    </div>   
+                {% endfor %}
+            </div>
+            <button class="buy_product">Xarid qilish</button>
+            <div class="total_summa">
+                <p>Jami summa:</p>
+                <p class="price"></p>
+                <p>so'm</p>
+            </div>
+            <div class="window">
+                <div class="shop_window">
+                    <div class="window_body">
+                        <div class="option">
+                            <input type="text" id="input1" required>
+                            <label for="input1">Ism</label>
+                        </div>
+                        <div class="option">
+                            <input type="text" id="input2" required>
+                            <label for="input2">Familiya</label>
+                        </div>
+                        <div class="option">
+                            <input type="number" id="input4" required>
+                            <label for="input4">Telefon raqam</label>
+                        </div>
+                        <div class="option">
+                            <input type="text" id="input4" required>
+                            <label for="input4">Manzil</label>
+                        </div>
+                        <button class="send">OK</button>
+                    </div>
+                    <div class="close_shop">X</div>
+                </div>
+            </div>    
+        </div>
+        <div class="footer">
+            <div class="footer_top">
+                <div class="left">
+                    <div>
+                        <div class="icon"><img src="{% static './images/operator.png' %}" alt=""></div>
+                        <div class="body">
+                            <p>Operator bilan bog'lanish:</p>
+                            <p>+998 99 999 99 99</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="icon"><img src="{% static './images/location.png' %}" alt=""></div>
+                        <div class="body">
+                            <p>Joylashuv:</p>
+                            <p>Toshkent viloyati, Mirzo Ulug'bek tumani 6-uy</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="icon"><img src="{% static './images/message.png' %}" alt=""></div>
+                        <div class="body">
+                            <p>Email:</p>
+                            <p>hamroh@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="right">
+                    <p>Xabar yozish</p>
+                    <form method="POST" class="table">{% csrf_token %}
+                        <textarea name="message" class="form-control" cols="30" rows="10"></textarea><br>
+                        <button type="submit">Jo'natish</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer_bottom">
+                <div>Mualliflik huquqi Propix. Barcha huquqlar himoyalangan.</div>
+                <div>
+                    <img src="./images/Uzcard.png" alt="">
+                    <img src="./images/Visa.png" alt="">
+                    <img src="./images/mastercard.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="{% static './script/index.js' %}"></script>
+    
+<script>
+    let regExp5 = document.querySelector('.total_summa .price');
+
+    let check_input = true
+    document.querySelector('.page .window .shop_window .window_body .send').onclick = () => {
+        document.querySelectorAll('.page .window .shop_window .window_body .option input').forEach(item => {
+            if(item.value == '') {
+                check_input = false
+            }
+        })
+        if(!check_input) {
+            alert('Ma`lumotlarni to`liq kiriting!')
+            check_input = true
+        } else {
+            alert('Xaridingiz uchun tashakkur!')
+            document.querySelectorAll('.page .window .shop_window .window_body .option input').forEach(item => {
+                item.value = ''
+            })
+            document.querySelector('.page').style.height = 'auto'
+            document.querySelector('.page').style.overflow = 'auto'
+            document.querySelector('.page .window').style.display = 'none'
+        }
+    }
+    
+    document.querySelector('.page .window .shop_window .close_shop').onclick = () => {
+        document.querySelector('body').style.overflowY = 'auto'
+        document.querySelector('.page .window').style.display = 'none'
+        document.querySelectorAll('.page .window .shop_window .window_body .option input').forEach(item => {
+            item.value = ''
+        })
+    }
+    
+    function totalPrice() {
+        let total_sum = 0
+        document.querySelectorAll('.buy_products .card .all_price .all_summa').forEach((item, i) => {
+            document.querySelectorAll('.buy_products .card .card_price .summa')[i].innerHTML = document.querySelectorAll('.buy_products .card .card_price .summa')[i].innerHTML.replace(/\s+/g, '').toString().replace(/\B(?=(\d{3})+(?!\d))/g, "")
+            let son = document.querySelectorAll('.buy_products .card .number_product input')[i].value*1;
+            let narx = document.querySelectorAll('.buy_products .card .card_price .summa')[i].innerHTML*1
+            item.innerHTML = son * narx
+            item.innerHTML = item.innerHTML.replace(/\s+/g, '').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+            document.querySelectorAll('.buy_products .card .card_price .summa')[i].innerHTML = document.querySelectorAll('.buy_products .card .card_price .summa')[i].innerHTML.replace(/\s+/g, '').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+            
+        })
+        document.querySelectorAll('.buy_products .card .all_price .all_summa').forEach(item => {            
+            item.innerHTML = item.innerHTML.replace(/\s+/g, '').toString().replace(/\B(?=(\d{3})+(?!\d))/g, "")
+            total_sum = total_sum + item.innerHTML*1
+            regExp5.innerHTML = total_sum
+            item.innerHTML = item.innerHTML.replace(/\s+/g, '').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+            regExp()
+        })
+    }
+
+    document.querySelectorAll('.number_product div input').forEach(item => {
+        item.addEventListener('keyup', () => {
+            totalPrice()
+        })
+    })
+
+    document.querySelectorAll('.card .card_btn button').forEach(item => {
+        item.onclick = () => {
+            item.parentElement.parentElement.remove()
+            totalPrice()
+        }
+    })
+
+    document.querySelectorAll('.number_product div .minus').forEach((item, i) => {
+        item.onclick = () => {
+            const input = document.querySelectorAll('.number_product div input')[i]
+            if(input.value == 1) {
+                input.value = 1
+            } else {
+                input.value -= 1
+            }
+            totalPrice()
+        }
+    })
+        
+    
+    document.querySelectorAll('.number_product div .plus').forEach((item, i) => {
+        item.onclick = () => {
+            const input = document.querySelectorAll('.number_product div input')[i]
+            input.value = input.value * 1 + 1
+            totalPrice()
+        }
+    })
+    
+    function regExp() {
+        let regExp4 = document.querySelectorAll('.buy_products .card .card_price .summa');
+        regExp4.forEach(item => {
+            item.innerHTML = item.innerHTML.replace(/\s+/g, '').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+        })
+        let regExp1 = document.querySelectorAll('.buy_products .card .all_price .all_summa');
+        regExp1.forEach(item => {
+            item.innerHTML = item.innerHTML.replace(/\s+/g, '').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+        })
+        regExp5.innerHTML = regExp5.innerHTML.replace(/\s+/g, '').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+    }
+
+    regExp()
+    totalPrice()
+
+</script>
+
+</body>
+</html>

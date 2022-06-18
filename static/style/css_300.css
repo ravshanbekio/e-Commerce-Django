@@ -1,0 +1,25 @@
+@media only screen and (max-width:300px){
+    :root{
+      --pagetitle: 5.2vw;
+      --two: 4.6vw;
+      --title: 4.2vw;
+      --context: 4vw;
+      --smallcontext: 3.8vw;
+      --one: 3.6vw;
+    }
+
+    .root .dostavka .dostavka_head {
+      height: 38vh;
+    }
+    .root .dostavka .dostavka_head img {
+      height: 100%;
+    }
+    .header .header_top .header_top_right .language div {
+      width: 22vw;
+    }
+    .header .header_top .header_top_right .language div div img {
+      width: 3.5vw;
+    }
+    
+      
+}
